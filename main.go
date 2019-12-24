@@ -16,7 +16,7 @@ func main() {
 	e.File("/contact", "./static/contact.html")
 	// e.GET("/", helloWorld)
 	// e.GET("/test/:id", getUser)
-	e.Logger.Fatal(e.Start(":1323"))
+	e.Logger.Fatal(e.Start(":8080"))
 }
 
 func helloWorld(c echo.Context) error {

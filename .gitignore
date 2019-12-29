@@ -17,4 +17,10 @@ mywebsite
 # Dependency directories (remove the comment below to include it)
 # vendor/
 
-*.terraform.*
+# Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+

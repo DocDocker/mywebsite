@@ -41,7 +41,7 @@ resource "aws_subnet" "tf_public_subnet" {
   vpc_id                  = "${aws_vpc.tf_vpc.id}"
   cidr_block              = "${var.public_cidr}"
   map_public_ip_on_launch = true
-  availability_zone = "us-west-2a"
+  availability_zone       = "us-west-2a"
 
   tags {
     Name                 = "tf_public_subnet"

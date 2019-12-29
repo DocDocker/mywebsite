@@ -11,14 +11,21 @@ resource "aws_instance" "tf_instance" {
   vpc_security_group_ids      = ["${aws_security_group.tf_public_sg.id}"]
   subnet_id                   = "${aws_subnet.tf_public_subnet.id}"
   associate_public_ip_address = true
-  availability_zone = "us-west-2a"
+  availability_zone           = "us-west-2a"
+
   lifecycle {
-      create_before_destroy = true
+    create_before_destroy = true
   }
 
-  user_data = "${file("${path.module}/run.sh")}"
-
-                
+  user_data = <<-EOF
+              #!/bin/bash
+              yum update -y
+              yum install git
+              git clone https://github.com/lucassha/mywebsite.git
+              cd mywebsite
+              docker build -t shannon-website .
+              docker run -d -p 80:8080 shannon-website
+              EOF
 
   tags {
     Name                 = "tf_ec2"
@@ -26,10 +33,10 @@ resource "aws_instance" "tf_instance" {
   }
 }
 
-
 # backup user_data that is 100% functional
 # yum update -y
 # yum install -y httpd.x86_64
 # systemctl start httpd.service
 # systemctl enable httpd.service
 # echo "Hello World from $(hostname -f)" > /var/www/html/index.html
+

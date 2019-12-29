@@ -16,10 +16,7 @@ resource "aws_instance" "tf_instance" {
       create_before_destroy = true
   }
 
-  user_data = <<-EOF
-                #!/bin/bash
-                docker build -t shannon-website .
-                docker run -d -p 80:8080 shannon-website
+  user_data = "${file("${path.module}/run.sh")}"
 
                 
 

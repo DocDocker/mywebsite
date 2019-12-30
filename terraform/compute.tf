@@ -20,7 +20,7 @@ resource "aws_instance" "tf_instance" {
   user_data = <<-EOF
               #!/bin/bash
               yum update -y
-              yum install git
+              yum install git -y
               git clone https://github.com/lucassha/mywebsite.git
               cd mywebsite
               docker build -t shannon-website .

@@ -9,3 +9,5 @@ variable "public_cidr" {}
 variable "accessip" {}
 
 variable "aws_ami" {}
+
+variable "version" {}

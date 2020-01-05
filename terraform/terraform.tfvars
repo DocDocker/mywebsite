@@ -14,3 +14,5 @@ key_name = "shannon-key-pair-newrelic-mbp"
 aws_region = "us-west-2"
 
 key_name = "tf-key-local-mbp"
+
+version = "1"

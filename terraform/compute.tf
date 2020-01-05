@@ -6,7 +6,7 @@ resource "aws_key_pair" "tf_auth" {
 resource "aws_instance" "tf_instance" {
   ami           = "${var.aws_ami}"
   instance_type = "t2.micro"
-
+  
   key_name                    = "${aws_key_pair.tf_auth.key_name}"
   vpc_security_group_ids      = ["${aws_security_group.tf_public_sg.id}"]
   subnet_id                   = "${aws_subnet.tf_public_subnet.id}"
@@ -23,8 +23,8 @@ resource "aws_instance" "tf_instance" {
               yum install git -y
               git clone https://github.com/lucassha/mywebsite.git
               cd mywebsite
-              docker build -t shannon-website .
-              docker run -d -p 80:8080 shannon-website
+              docker build -t shannon-website-"${var.version}" .
+              docker run -d -p 80:8080 shannon-website-"${var.version}"
               EOF
 
   tags {

@@ -6,7 +6,7 @@ resource "aws_key_pair" "tf_auth" {
 resource "aws_instance" "tf_instance" {
   ami           = "${var.aws_ami}"
   instance_type = "t2.micro"
-  
+
   key_name                    = "${aws_key_pair.tf_auth.key_name}"
   vpc_security_group_ids      = ["${aws_security_group.tf_public_sg.id}"]
   subnet_id                   = "${aws_subnet.tf_public_subnet.id}"

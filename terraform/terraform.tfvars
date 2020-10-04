@@ -1,5 +1,3 @@
-aws_region = "us-west-2"
-
 vpc_cidr = "10.124.0.0/16"
 
 public_cidr = "10.124.1.0/24"
